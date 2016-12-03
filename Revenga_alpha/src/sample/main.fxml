@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
+
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <top>
+       <MenuBar fx:id="topMenuBar" useSystemMenuBar="true">
+           <menus>
+               <Menu text="File">
+                   <items>
+                       <MenuItem onAction="#openFile" text="Open">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="O" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </MenuItem>
+                       <MenuItem text="Save">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="S" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </MenuItem>
+                       <MenuItem text="Export">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="E" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </MenuItem>
+                   </items>
+                   <items>
+                       <SeparatorMenuItem />
+                       <MenuItem onAction="#showSettings" text="Settings" />
+                   </items>
+
+               </Menu>
+
+               <Menu text="Edit">
+                   <items>
+                       <MenuItem text="Clip" />
+                       <MenuItem text="Section" />
+                   </items>
+               </Menu>
+
+
+               <Menu text="View">
+                   <items>
+                       <MenuItem onAction="#BytePlot" text="Byte Plot" />
+                       <MenuItem onAction="#DotPlot2D" text="Dot Plot" />
+                       <MenuItem onAction="#ValuePalette2D" text="Value Paletted" />
+                       <MenuItem onAction="#ScatterPlot" text="ScatterPlot" />
+                       <MenuItem onAction="#LocalEntropyPlot" text="Entropy" />
+                       <MenuItem text="Hex'ed" />
+                   </items>
+               </Menu>
+
+
+               <Menu text="Help">
+
+               </Menu>
+           </menus>
+       </MenuBar>
+   </top>
+
+   <right>
+      <VBox fx:id="contextMenu" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <CheckBox fx:id="is3D" mnemonicParsing="false" onAction="#contextMenuEvent" text="3D" />
+            <Label fx:id="positionInFile" text="Current Position" />
+            <RadioButton fx:id="eight" mnemonicParsing="false" onAction="#contextMenuEvent" text="8-bit">
+               <toggleGroup>
+                   <ToggleGroup fx:id="wordSize" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="sixteen" mnemonicParsing="false" text="16-bit" toggleGroup="$wordSize" />
+         </children>
+      </VBox>
+   </right>
+
+   <center>
+      <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+
+</BorderPane>
